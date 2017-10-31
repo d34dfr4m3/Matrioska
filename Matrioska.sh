@@ -19,12 +19,16 @@ function extrai(){
 	                KIND=$(file $FILE | cut -d: -f2 | cut -c 1-5)
 	                rm $OLD
                 done                                   
-          else                                          
+	elif [ $( file $FILE | grep -i text | wc -l ) -eq 1 ];then
+			echo "[*] Done!"                      
+			exit 1 
+	
+        else                                          
                 echo "Error in Extraction"
 		exit 0
                                                                      
 	fi
-	echo "[*] Done!"                      
+	extrai
 
 }
 function compacta(){
